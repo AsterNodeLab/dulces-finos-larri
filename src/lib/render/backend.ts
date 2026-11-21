@@ -6,7 +6,7 @@
 import { spawn } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
-import { activeJobs, getJobPid, getRenderJob, updateRenderJob } from "../store";
+import { activeJobs, getJobHeartbeat, getJobPid, getRenderJob, updateRenderJob } from "../store";
 import { paths, ensureDirs } from "../paths";
 import { nowIso } from "../ids";
 
@@ -29,11 +29,16 @@ function isAlive(pid: number | null | undefined): boolean {
   }
 }
 
-/** Marca como error los trabajos "en curso" cuyo worker ya no existe (p. ej. tras reiniciar la app). */
+/** Sin señal de vida en este tiempo se considera colgado (cubre reutilización de PID en Windows). */
+const HEARTBEAT_TIMEOUT_MS = 5 * 60_000;
+
+/** Marca como error los trabajos "en curso" cuyo worker ya no existe o dejó de dar señales de vida. */
 export function reapStaleJobs() {
   for (const j of activeJobs()) {
     const pid = getJobPid(j.id);
-    if (!isAlive(pid)) updateRenderJob(j.id, { status: "error", error: "El proceso de render se interrumpió (la app se reinició o el worker terminó inesperadamente). Reintenta.", finishedAt: nowIso(), pid: null });
+    const hb = getJobHeartbeat(j.id);
+    const silent = hb ? Date.now() - Date.parse(hb) > HEARTBEAT_TIMEOUT_MS : false;
+    if (!isAlive(pid) || silent) updateRenderJob(j.id, { status: "error", error: "El proceso de render se interrumpió (la app se reinició o el worker terminó inesperadamente). Reintenta.", finishedAt: nowIso(), pid: null });
   }
 }
 

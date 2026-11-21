@@ -154,4 +154,9 @@ CREATE TABLE settings (
 );
 `,
   },
+  {
+    id: 2,
+    name: "render_heartbeat",
+    sql: `ALTER TABLE render_jobs ADD COLUMN heartbeat_at TEXT;`,
+  },
 ];

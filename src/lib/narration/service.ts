@@ -11,6 +11,7 @@ import { mediaAbs, mediaRel, paths } from "../paths";
 import { newId } from "../ids";
 import { probe, run } from "../media-tools";
 import { getScript, getStoryboard, logAiUsage, saveNarration } from "../store";
+import { assertWithinRate } from "../security/rate-limit";
 import { distributeWords, estimateAlignment, parseSilences, tokenize, wordsFromCharAlignment } from "../captions/alignment";
 import type { Narration, WordTiming } from "@/shared/schema";
 
@@ -91,7 +92,8 @@ export async function importNarration(projectId: string, file: { name: string; b
     return saveNarration(projectId, { kind: "upload", filePath: rel, mime: type.mime, durationInSeconds: info.durationInSeconds, alignmentSource: source, words });
   } catch (e) {
     fs.rmSync(abs, { force: true });
-    throw e;
+    if (e instanceof NarrationError) throw e;
+    throw new NarrationError("No se pudo leer el audio: el archivo está dañado o el formato no es compatible.");
   }
 }
 
@@ -100,6 +102,7 @@ export async function generateElevenLabs(projectId: string): Promise<Narration> 
   const text = narrationText(projectId);
   if (!text) throw new NarrationError("No hay guion ni storyboard con narración.");
   if (text.length > 5000) throw new NarrationError("El texto supera 5,000 caracteres.");
+  assertWithinRate("elevenlabs", Number(process.env.ELEVENLABS_MAX_CALLS_PER_HOUR ?? 20) || 20);
   const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${encodeURIComponent(env.elevenlabsVoiceId)}/with-timestamps?output_format=mp3_44100_128`, {
     method: "POST",
     headers: { "content-type": "application/json", "xi-api-key": env.elevenlabsApiKey },

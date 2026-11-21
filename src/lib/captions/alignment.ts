@@ -62,7 +62,10 @@ export function estimateAlignment(text: string, duration: number, silences: Sile
   let cur: string[] = [];
   for (const w of words) {
     cur.push(w);
-    if (/[.!?…,;:]$/.test(w)) (phrases.push(cur), (cur = []));
+    if (/[.!?…,;:]$/.test(w)) {
+      phrases.push(cur);
+      cur = [];
+    }
   }
   if (cur.length) phrases.push(cur);
 
@@ -80,7 +83,10 @@ export function estimateAlignment(text: string, duration: number, silences: Sile
     inner.forEach((s, i) => {
       if (used.has(i)) return;
       const d = Math.abs((s.start + s.end) / 2 - mid);
-      if (d < bestD) (best = i), (bestD = d);
+      if (d < bestD) {
+        best = i;
+        bestD = d;
+      }
     });
     if (best >= 0) {
       used.add(best);

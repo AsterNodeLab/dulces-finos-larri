@@ -26,6 +26,7 @@ export const GET = handle(async (req: Request, ctx: Ctx<{ path: string[] }>) => 
   if (m) {
     const start = m[1] ? Number(m[1]) : 0;
     const end = m[2] ? Math.min(Number(m[2]), size - 1) : size - 1;
+    if (!(m[1] || m[2]) || start >= size || start > end) return new Response(null, { status: 416, headers: { "content-range": `bytes */${size}` } });
     return new Response(Readable.toWeb(fs.createReadStream(abs, { start, end })) as ReadableStream, { status: 206, headers: { ...headers, "content-range": `bytes ${start}-${end}/${size}`, "content-length": String(end - start + 1) } });
   }
   return new Response(Readable.toWeb(fs.createReadStream(abs)) as ReadableStream, { headers: { ...headers, "content-length": String(size) } });

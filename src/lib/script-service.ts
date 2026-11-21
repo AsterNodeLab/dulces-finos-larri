@@ -14,7 +14,9 @@ export class ScriptError extends Error {}
 
 function claimsFor(projectId: string) {
   const r = getResearch(projectId);
-  return { summary: r?.summary ?? "", claims: (r?.claims ?? []).map((c) => ({ id: c.id, text: c.text, status: c.status })) };
+  // El resumen automático sin IA es material de trabajo, no narración: no se pasa al guion offline.
+  const summary = r && r.provider !== "offline" && !r.summary.startsWith("Resumen automático sin IA") ? r.summary : "";
+  return { summary, claims: (r?.claims ?? []).map((c) => ({ id: c.id, text: c.text, status: c.status })) };
 }
 
 /** Asegura ids únicos y estables (seg-1..n) y descarta claimIds inexistentes. */

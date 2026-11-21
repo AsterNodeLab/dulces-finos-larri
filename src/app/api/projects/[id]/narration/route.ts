@@ -1,7 +1,7 @@
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 import { z } from "zod";
-import { handle, json, notFound, HttpError, readJson, type Ctx } from "@/lib/api";
+import { assertBodySize, handle, json, notFound, HttpError, readJson, type Ctx } from "@/lib/api";
 import { importNarration } from "@/lib/narration/service";
 import { clearNarration, getActiveNarration, getProject, getStoryboard, saveStoryboard, updateNarrationWords } from "@/lib/store";
 import { applyNarration } from "@/lib/storyboard/service";
@@ -17,8 +17,7 @@ function resync(id: string) {
 export const POST = handle(async (req: Request, ctx: Ctx<{ id: string }>) => {
   const { id } = await ctx.params;
   if (!getProject(id)) throw notFound("Proyecto");
-  const len = Number(req.headers.get("content-length") ?? 0);
-  if (len > (env.maxUploadMb + 1) * 1024 * 1024) throw new HttpError(413, `El archivo supera ${env.maxUploadMb} MB`);
+  assertBodySize(req, env.maxUploadMb);
   const form = await req.formData().catch(() => null);
   const file = form?.get("file");
   if (!(file instanceof File)) throw new HttpError(400, 'Envía el audio en el campo "file"');

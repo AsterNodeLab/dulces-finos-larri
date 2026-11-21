@@ -2,7 +2,7 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 import fs from "node:fs";
 import path from "node:path";
-import { handle, json, HttpError } from "@/lib/api";
+import { assertBodySize, handle, json, HttpError } from "@/lib/api";
 import { createAsset, listAssets } from "@/lib/store";
 import { env } from "@/lib/env";
 import { mediaAbs, mediaRel } from "@/lib/paths";
@@ -28,6 +28,7 @@ export const GET = handle(async (req: Request) => {
 
 /** Sube un recurso de marca (multipart): file, brand, kind, label, licenseNote. SVG no se acepta (puede contener scripts). */
 export const POST = handle(async (req: Request) => {
+  assertBodySize(req, env.maxUploadMb);
   const form = await req.formData().catch(() => null);
   if (!form) throw new HttpError(400, "Se esperaba multipart/form-data");
   const file = form.get("file");

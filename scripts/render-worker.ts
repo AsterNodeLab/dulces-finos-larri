@@ -75,6 +75,8 @@ async function processJob(jobId: string) {
       crf: preview ? 28 : 20,
       x264Preset: preview ? "veryfast" : (env.x264Preset as "medium"),
       pixelFormat: "yuv420p",
+      // BT.709 rango limitado: evita yuvj420p (rango completo) que algunas plataformas muestran con negros alterados.
+      colorSpace: "bt709",
       imageFormat: "jpeg",
       jpegQuality: preview ? 70 : 90,
       cancelSignal,
@@ -116,8 +118,16 @@ async function processJob(jobId: string) {
   }
 }
 
+/** Borra bundles huérfanos de workers anteriores (p. ej. si se mataron a la mitad). */
+function cleanStaleBundles() {
+  for (const f of fs.readdirSync(paths.tmp)) {
+    if (f.startsWith("bundle-") || f.endsWith(".partial.mp4")) fs.rmSync(path.join(paths.tmp, f), { recursive: true, force: true });
+  }
+}
+
 async function main() {
   ensureDirs();
+  cleanStaleBundles();
   log("start");
   try {
     for (;;) {

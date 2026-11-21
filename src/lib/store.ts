@@ -50,8 +50,14 @@ function toProject(r: Row): Project {
 export function listProjects(filter: { brand?: string; status?: string } = {}): Project[] {
   const where: string[] = [];
   const args: string[] = [];
-  if (filter.brand) (where.push("brand = ?"), args.push(filter.brand));
-  if (filter.status) (where.push("status = ?"), args.push(filter.status));
+  if (filter.brand) {
+    where.push("brand = ?");
+    args.push(filter.brand);
+  }
+  if (filter.status) {
+    where.push("status = ?");
+    args.push(filter.status);
+  }
   const sql = `SELECT * FROM projects ${where.length ? "WHERE " + where.join(" AND ") : ""} ORDER BY updated_at DESC`;
   return (db().prepare(sql).all(...args) as Row[]).map(toProject);
 }
@@ -339,7 +345,7 @@ export function claimNextJob(pid: number): RenderJob | null {
   for (let i = 0; i < 5; i++) {
     const next = nextQueuedJob();
     if (!next) return null;
-    const r = db().prepare("UPDATE render_jobs SET status = 'bundling', pid = ?, started_at = ? WHERE id = ? AND status = 'queued'").run(pid, nowIso(), next.id);
+    const r = db().prepare("UPDATE render_jobs SET status = 'bundling', pid = ?, started_at = ?, heartbeat_at = ? WHERE id = ? AND status = 'queued'").run(pid, nowIso(), nowIso(), next.id);
     if (Number(r.changes) === 1) return getRenderJob(next.id);
   }
   return null;
@@ -373,12 +379,20 @@ export function updateRenderJob(
     }
   }
   if (!sets.length) return;
+  sets.push("heartbeat_at = ?");
+  args.push(nowIso());
   db().prepare(`UPDATE render_jobs SET ${sets.join(", ")} WHERE id = ?`).run(...args, id);
 }
 
 export function getJobPid(id: string): number | null {
   const r = db().prepare("SELECT pid FROM render_jobs WHERE id = ?").get(id) as Row | undefined;
   return r?.pid == null ? null : Number(r.pid);
+}
+
+/** Última señal de vida del worker para el trabajo (ISO) o null. */
+export function getJobHeartbeat(id: string): string | null {
+  const r = db().prepare("SELECT heartbeat_at, started_at FROM render_jobs WHERE id = ?").get(id) as Row | undefined;
+  return s(r?.heartbeat_at) ?? s(r?.started_at);
 }
 
 /* ─────────────────────────────── Assets ────────────────────────────── */
