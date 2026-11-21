@@ -32,7 +32,8 @@ Todo vive en `remotion/`; el contrato (`src/shared/*`) no se modifica desde aqu�
 - No se usa `TransitionSeries` (solaparía y acortaría el timeline, rompiendo la sincronía con la voz).
 - `transition` (`none|fade|slide-up|wipe`) es una animación de **entrada** dentro de los primeros 12 frames de la escena.
 - `camera` (`static|push-in|drift`) es una transformación sutil sobre la escena completa.
-- Dentro de cada escena los elementos se revelan escalonados a lo largo de su duración (`staggerFrames`), en el orden de la narración.
+- Dentro de cada escena los elementos se revelan escalonados (`staggerFrames`, `fitSpan`), en el orden de la narración, y TODO queda revelado antes de `min(75 % de la escena, duración − 12)` (`revealDeadline`). Las escenas cortas comprimen el escalonado.
+- Tamaños mínimos en pantalla: etiquetas mono ≥ 24 px (marca de demo 22 px), cuerpo ≥ 34 px (forzado en `monoStyle`/`bodyStyle`).
 - Subtítulos: tiempos de palabra en segundos desde el inicio del audio → frames globales.
 
 ## Assets

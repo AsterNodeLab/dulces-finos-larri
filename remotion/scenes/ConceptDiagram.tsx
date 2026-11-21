@@ -16,8 +16,8 @@ import type { SceneComponentProps } from "./types";
 
 type Node = ScenePropsOf<"ConceptDiagram">["nodes"][number];
 const W = CONTENT.width;
-const H = 920; // lienzo radial: y ≈ 330..1250 en pantalla
-const CANVAS_TOP = 80;
+const H = 900; // lienzo radial: y ≈ 330..1250 en pantalla
+const CANVAS_TOP = 50;
 
 const NodeCard: React.FC<{ node: Node; brand: BrandProfile; at: number; index: number; width: number; style?: React.CSSProperties; centerY?: boolean }> = ({ node, brand, at, index, width, style, centerY }) => {
   const pop = usePop(at);
@@ -75,10 +75,10 @@ export const ConceptDiagram: React.FC<SceneComponentProps<"ConceptDiagram">> = (
 
   // Radial: tarjetas de ~340 px en columnas izquierda/derecha (o centradas arriba/abajo).
   const cardW = n >= 5 ? 320 : 340;
-  const cardHalfH = 105;
+  const cardHalfH = 122;
   const cx = W / 2;
   const cy = H / 2;
-  const R = n >= 5 ? 105 : 135;
+  const R = n >= 5 ? 130 : 160;
   const angles = props.nodes.map((_, i) => -Math.PI / 2 + (i / n) * Math.PI * 2 + (n % 2 === 0 ? Math.PI / n : 0));
   const maxSin = Math.max(...angles.map((a) => Math.abs(Math.sin(a))), 0.01);
   const ry = (H / 2 - cardHalfH) / maxSin;

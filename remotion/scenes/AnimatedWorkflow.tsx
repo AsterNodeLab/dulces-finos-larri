@@ -18,7 +18,7 @@ export const AnimatedWorkflow: React.FC<SceneComponentProps<"AnimatedWorkflow">>
   const frame = useCurrentFrame();
   const c = brand.colors;
   const n = props.steps.length;
-  const canvasH = 860;
+  const canvasH = 760;
   const gap = Math.min(270, (canvasH - 2 * R) / Math.max(1, n - 1));
   const ys = props.steps.map((_, i) => R + 10 + i * gap);
   const at = staggerFrames(n, durationInFrames, 20, props.loop ? 0.6 : 0.7);
@@ -38,7 +38,7 @@ export const AnimatedWorkflow: React.FC<SceneComponentProps<"AnimatedWorkflow">>
   return (
     <SceneArea>
       <SceneTitle text={props.title} brand={brand} size={66} />
-      <div style={{ position: "relative", marginTop: 90, height: canvasH }}>
+      <div style={{ position: "absolute", left: 0, top: 220, height: canvasH, width: W }}>
         <svg width={W} height={canvasH} style={{ position: "absolute", inset: 0, overflow: "visible" }}>
           {ys.slice(0, -1).map((y, i) => {
             const len = ys[i + 1] - y - 2 * R;
