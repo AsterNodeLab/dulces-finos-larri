@@ -10,7 +10,6 @@ import { useBrand } from "./brand-store";
 import { BrandTag, CardGridSkeleton, DemoBadge, ErrorCard, PageContainer, ProjectCard, SectionTitle, Thumb } from "./common";
 import { fmtBytes, fmtClock, fmtDate, fmtDateTime } from "./format";
 import { useInterval, useApi } from "./use-api";
-import { ModeBadge } from "./app-shell";
 import { QUALITY_LABEL, SCENE_LABEL } from "./labels";
 import type { ProjectsResponse, TemplatesResponse } from "./types";
 
@@ -119,12 +118,9 @@ export function Dashboard() {
   const templateList = (templates.data?.templates ?? []).filter((t) => showBoth || BRANDS[brand].templates.includes(t.id));
 
   const actions = (
-    <div className="flex items-center gap-3">
-      <ModeBadge />
-      <Button size="lg" onClick={() => router.push("/projects/new")}>
-        <Icon name="plus" size={16} /> Crear video
-      </Button>
-    </div>
+    <Button size="lg" onClick={() => router.push("/projects/new")}>
+      <Icon name="plus" size={16} /> Crear video
+    </Button>
   );
 
   return (
@@ -176,7 +172,7 @@ export function Dashboard() {
           <section aria-label="Resumen" className="grid grid-cols-2 gap-4 xl:grid-cols-4">
             <Stat label="En producción" value={inProduction.length} hint="Guion, producción o revisión" />
             <Stat label="En revisión" value={inReview} hint="Esperan tu aprobación" />
-            <Stat label="Exportados este mes" value={exportedMonth} />
+            <Stat label="Exportados este mes" value={exportedMonth} hint="Marcados como exportados" />
             <Stat label="Renders en cola" value={queued} hint={queued ? "Procesando ahora" : "Nada pendiente"} />
           </section>
 

@@ -169,7 +169,7 @@ export function FieldControl({
     const str = (value as string | undefined) ?? "";
     const long = (desc.max ?? 0) > 100;
     const counter = desc.max ? `${str.length}/${desc.max}` : undefined;
-    const invalid = (desc.max !== undefined && str.length > desc.max) || (!desc.optional && !str.trim());
+    const invalid = (desc.max !== undefined && str.length > desc.max) || (!desc.optional && (desc.min ?? 0) > 0 && !str.trim());
     const set = (v: string) => onChange(v === "" && desc.optional ? undefined : v);
     return (
       <Row label={label} htmlFor={id} counter={counter}>

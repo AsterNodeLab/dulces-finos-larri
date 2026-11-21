@@ -47,3 +47,8 @@ export function dayKeyOf(iso: string | null | undefined): string | null {
 export function pluralize(n: number, one: string, many: string): string {
   return `${n} ${n === 1 ? one : many}`;
 }
+
+/** Ruta de un archivo de data/media servida por /api/media. */
+export function mediaUrl(rel: string): string {
+  return `/api/media/${rel.split("/").map(encodeURIComponent).join("/")}`;
+}

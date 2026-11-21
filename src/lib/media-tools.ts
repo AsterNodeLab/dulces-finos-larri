@@ -11,7 +11,8 @@ type Tool = "ffmpeg" | "ffprobe";
 const cache: Partial<Record<Tool, { bin: string; env: NodeJS.ProcessEnv } | null>> = {};
 
 function compositorDirs(): string[] {
-  const nm = path.join(process.cwd(), "node_modules", "@remotion");
+  // Ruta construida en tiempo de ejecución (evita que el bundler la rastree como import dinámico).
+  const nm = [process.cwd(), "node_modules", "@remotion"].join(path.sep);
   if (!fs.existsSync(nm)) return [];
   return fs
     .readdirSync(nm)

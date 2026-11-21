@@ -30,6 +30,7 @@ export default function PreviewPlayer({
         compositionHeight={spec.height}
         controls
         loop={false}
+        initialFrame={Math.min(Math.round(spec.fps), duration - 1)}
         clickToPlay
         acknowledgeRemotionLicense
         style={{ width: "100%" }}

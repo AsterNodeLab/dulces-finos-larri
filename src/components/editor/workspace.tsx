@@ -110,7 +110,10 @@ export function Workspace({ id }: { id: string }) {
     return (TAB_IDS as readonly string[]).includes(h) ? (h as TabId) : null;
   });
 
-  const tab: TabId = tabChoice ?? (bundle ? autoTab(bundle) : "research");
+  // La pestaña inicial se decide una sola vez al cargar; después solo cambia el usuario.
+  const [autoChoice, setAutoChoice] = React.useState<TabId | null>(null);
+  if (bundle && autoChoice === null) setAutoChoice(autoTab(bundle));
+  const tab: TabId = tabChoice ?? autoChoice ?? "research";
   const setTab = React.useCallback((t: TabId) => {
     setTabChoice(t);
     try {

@@ -27,8 +27,8 @@ export function ensureDirs() {
 /** Convierte una ruta relativa de media (con "/") en absoluta, impidiendo salir de data/media. */
 export function mediaAbs(rel: string): string {
   const clean = rel.replace(/\\/g, "/").replace(/^\/+/, "");
-  const abs = path.resolve(paths.media, ...clean.split("/"));
-  const root = path.resolve(paths.media) + path.sep;
+  const abs = path.resolve(/* turbopackIgnore: true */ paths.media, ...clean.split("/"));
+  const root = path.resolve(/* turbopackIgnore: true */ paths.media) + path.sep;
   if (!abs.startsWith(root)) throw new Error("Ruta fuera del almacenamiento de media");
   return abs;
 }

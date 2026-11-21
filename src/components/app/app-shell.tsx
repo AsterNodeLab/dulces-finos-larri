@@ -61,8 +61,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           })}
         </nav>
         <div className="mt-auto flex flex-col gap-1 px-6 py-6">
-          <span className="eyebrow">Flujo</span>
-          <p className="text-xs leading-5 text-subtle">Idea · Investigación · Guion · Storyboard · Voz · Animación · Video final</p>
+          <span className="eyebrow">Local</span>
+          <p className="text-xs leading-5 text-subtle">Tus proyectos, voces y renders viven en este equipo.</p>
         </div>
       </aside>
       <div className="flex min-w-0 flex-1 flex-col">

@@ -10,7 +10,7 @@ function num(name: string, fallback: number): number {
 }
 
 export const env = {
-  dataDir: path.resolve(process.env.VQ_DATA_DIR ?? path.join(process.cwd(), "data")),
+  dataDir: path.resolve(/* turbopackIgnore: true */ process.env.VQ_DATA_DIR ?? path.join(/* turbopackIgnore: true */ process.cwd(), "data")),
 
   anthropicApiKey: process.env.ANTHROPIC_API_KEY ?? "",
   anthropicModel: process.env.ANTHROPIC_MODEL ?? "claude-sonnet-5-5",

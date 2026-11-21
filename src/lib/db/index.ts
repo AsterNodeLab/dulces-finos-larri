@@ -2,13 +2,19 @@
  * Acceso a SQLite con el módulo nativo de Node (node:sqlite, Node >= 22.13).
  * Ventaja de portabilidad: no requiere compilar módulos nativos en Windows.
  */
-import { createRequire } from "node:module";
 import type { DatabaseSync as DatabaseSyncType } from "node:sqlite";
 import { MIGRATIONS } from "./migrations";
 import { ensureDirs, paths } from "../paths";
 
-// require dinámico: evita que el bundler de Next intente resolver "node:sqlite".
-const nodeRequire = createRequire(import.meta.url);
+/**
+ * process.getBuiltinModule (Node >= 22.3) carga el módulo nativo en tiempo de ejecución sin pasar por el
+ * bundler: funciona igual con Turbopack, webpack, tsx y vitest.
+ */
+function loadSqlite(): typeof import("node:sqlite") {
+  const mod = process.getBuiltinModule?.("node:sqlite") as typeof import("node:sqlite") | undefined;
+  if (!mod) throw new Error("node:sqlite no disponible: se requiere Node.js >= 22.13.");
+  return mod;
+}
 
 const g = globalThis as unknown as { __vqDb?: DatabaseSyncType };
 
@@ -16,7 +22,7 @@ export function db(): DatabaseSyncType {
   if (g.__vqDb) return g.__vqDb;
   ensureDirs();
   silenceSqliteWarning();
-  const { DatabaseSync } = nodeRequire("node:sqlite") as typeof import("node:sqlite");
+  const { DatabaseSync } = loadSqlite();
   const conn = new DatabaseSync(paths.db);
   conn.exec("PRAGMA journal_mode = WAL; PRAGMA foreign_keys = ON; PRAGMA busy_timeout = 5000;");
   migrate(conn);

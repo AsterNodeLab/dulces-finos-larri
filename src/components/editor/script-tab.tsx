@@ -148,7 +148,7 @@ function ScriptInner({ ctx, defaults }: { ctx: TabCtx; defaults: ScriptSettings 
       {script ? (
         <SegmentEditor key={`${script.version}-${script.updatedAt}`} ctx={ctx} script={script} form={form} />
       ) : (
-        <EmptyState icon={<Icon name="doc" />} title="Todavía no hay guion" description="Genera un primer borrador con los ajustes de arriba. Podrás editarlo segmento por segmento." />
+        <EmptyState icon={<Icon name="book" />} title="Todavía no hay guion" description="Genera un primer borrador con los ajustes de arriba. Podrás editarlo segmento por segmento." />
       )}
 
       <ConfirmDialog
