@@ -1,0 +1,16 @@
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+# Datos locales: base SQLite, uploads, renders, temporales
+data/*
+!data/.gitkeep
+# Secretos
+.env
+.env.local
+.env.*.local
+# Sistema
+.DS_Store
+Thumbs.db
+*.log

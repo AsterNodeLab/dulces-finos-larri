@@ -1,0 +1,56 @@
+{
+  "name": "visionquant-studio",
+  "version": "0.1.0",
+  "private": true,
+  "description": "VisionQuant Studio: estudio audiovisual con IA para videos educativos verticales (Vision One / VisionQuant).",
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "dev": "next dev --port 3000",
+    "build": "next build",
+    "start": "next start --port 3000",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "db:migrate": "tsx scripts/migrate.ts",
+    "db:seed-demo": "tsx scripts/seed-demo.ts",
+    "remotion:studio": "remotion studio remotion/index.ts",
+    "render:demo": "tsx scripts/render-demo.ts",
+    "render:worker": "tsx scripts/render-worker.ts",
+    "demo:voice": "tsx scripts/make-demo-voice.ts",
+    "doctor": "tsx scripts/doctor.ts",
+    "clean:tmp": "tsx scripts/clean-tmp.ts"
+  },
+  "dependencies": {
+    "@fontsource-variable/fraunces": "5.3.0",
+    "@fontsource-variable/inter": "5.3.0",
+    "@fontsource-variable/jetbrains-mono": "5.3.0",
+    "@remotion/bundler": "4.0.545",
+    "@remotion/player": "4.0.545",
+    "@remotion/renderer": "4.0.545",
+    "@remotion/transitions": "4.0.545",
+    "class-variance-authority": "0.7.1",
+    "clsx": "2.1.1",
+    "next": "16.4.6",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "remotion": "4.0.545",
+    "tailwind-merge": "3.7.1",
+    "tsx": "4.23.15",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@remotion/cli": "4.0.545",
+    "@tailwindcss/postcss": "4.3.5",
+    "@types/node": "22.20.5",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "eslint": "9.39.5",
+    "eslint-config-next": "16.4.6",
+    "tailwindcss": "4.3.5",
+    "typescript": "5.9.3",
+    "vitest": "5.1.1"
+  }
+}

@@ -1,0 +1,577 @@
+{
+  "voice": "espeak-ng mb-mx2",
+  "note": "Voz sintética de demostración. Sustitúyela por tu narración real.",
+  "durationInSeconds": 46.839569,
+  "words": [
+    {
+      "text": "Un",
+      "start": 0.03,
+      "end": 0.27
+    },
+    {
+      "text": "chatbot",
+      "start": 0.27,
+      "end": 0.751
+    },
+    {
+      "text": "responde",
+      "start": 0.751,
+      "end": 1.473
+    },
+    {
+      "text": "preguntas.",
+      "start": 1.473,
+      "end": 2.194
+    },
+    {
+      "text": "Un",
+      "start": 2.424,
+      "end": 2.591
+    },
+    {
+      "text": "agente",
+      "start": 2.591,
+      "end": 3.092
+    },
+    {
+      "text": "de",
+      "start": 3.092,
+      "end": 3.259
+    },
+    {
+      "text": "inteligencia",
+      "start": 3.259,
+      "end": 4.262
+    },
+    {
+      "text": "artificial",
+      "start": 4.262,
+      "end": 5.097
+    },
+    {
+      "text": "hace",
+      "start": 5.097,
+      "end": 5.431
+    },
+    {
+      "text": "algo",
+      "start": 5.431,
+      "end": 5.765
+    },
+    {
+      "text": "más:",
+      "start": 5.765,
+      "end": 5.932
+    },
+    {
+      "text": "decide",
+      "start": 6.049,
+      "end": 6.55
+    },
+    {
+      "text": "qué",
+      "start": 6.55,
+      "end": 6.885
+    },
+    {
+      "text": "pasos",
+      "start": 6.885,
+      "end": 7.219
+    },
+    {
+      "text": "dar",
+      "start": 7.219,
+      "end": 7.386
+    },
+    {
+      "text": "para",
+      "start": 7.386,
+      "end": 7.72
+    },
+    {
+      "text": "cumplir",
+      "start": 7.72,
+      "end": 8.054
+    },
+    {
+      "text": "un",
+      "start": 8.054,
+      "end": 8.221
+    },
+    {
+      "text": "objetivo.",
+      "start": 8.221,
+      "end": 8.889
+    },
+    {
+      "text": "Dicho",
+      "start": 9.119,
+      "end": 9.463
+    },
+    {
+      "text": "simple:",
+      "start": 9.463,
+      "end": 9.808
+    },
+    {
+      "text": "es",
+      "start": 9.928,
+      "end": 10.1
+    },
+    {
+      "text": "un",
+      "start": 10.1,
+      "end": 10.272
+    },
+    {
+      "text": "modelo",
+      "start": 10.272,
+      "end": 10.789
+    },
+    {
+      "text": "de",
+      "start": 10.789,
+      "end": 10.961
+    },
+    {
+      "text": "lenguaje",
+      "start": 10.961,
+      "end": 11.649
+    },
+    {
+      "text": "que",
+      "start": 11.649,
+      "end": 11.993
+    },
+    {
+      "text": "usa",
+      "start": 11.993,
+      "end": 12.338
+    },
+    {
+      "text": "herramientas",
+      "start": 12.338,
+      "end": 13.198
+    },
+    {
+      "text": "en",
+      "start": 13.198,
+      "end": 13.37
+    },
+    {
+      "text": "un",
+      "start": 13.37,
+      "end": 13.542
+    },
+    {
+      "text": "ciclo.",
+      "start": 13.542,
+      "end": 13.886
+    },
+    {
+      "text": "Tiene",
+      "start": 14.116,
+      "end": 14.527
+    },
+    {
+      "text": "un",
+      "start": 14.527,
+      "end": 14.664
+    },
+    {
+      "text": "objetivo,",
+      "start": 14.664,
+      "end": 15.212
+    },
+    {
+      "text": "consulta",
+      "start": 15.308,
+      "end": 15.719
+    },
+    {
+      "text": "herramientas",
+      "start": 15.719,
+      "end": 16.404
+    },
+    {
+      "text": "como",
+      "start": 16.404,
+      "end": 16.678
+    },
+    {
+      "text": "tu",
+      "start": 16.678,
+      "end": 16.815
+    },
+    {
+      "text": "correo",
+      "start": 16.815,
+      "end": 17.226
+    },
+    {
+      "text": "o",
+      "start": 17.226,
+      "end": 17.363
+    },
+    {
+      "text": "calendario",
+      "start": 17.363,
+      "end": 18.048
+    },
+    {
+      "text": "y",
+      "start": 18.048,
+      "end": 18.185
+    },
+    {
+      "text": "recuerda",
+      "start": 18.185,
+      "end": 18.733
+    },
+    {
+      "text": "lo",
+      "start": 18.733,
+      "end": 18.87
+    },
+    {
+      "text": "que",
+      "start": 18.87,
+      "end": 19.144
+    },
+    {
+      "text": "hizo.",
+      "start": 19.144,
+      "end": 19.418
+    },
+    {
+      "text": "Funciona",
+      "start": 19.648,
+      "end": 20.228
+    },
+    {
+      "text": "así:",
+      "start": 20.228,
+      "end": 20.518
+    },
+    {
+      "text": "percibe",
+      "start": 20.62,
+      "end": 21.055
+    },
+    {
+      "text": "la",
+      "start": 21.055,
+      "end": 21.2
+    },
+    {
+      "text": "tarea,",
+      "start": 21.2,
+      "end": 21.635
+    },
+    {
+      "text": "razona",
+      "start": 21.737,
+      "end": 22.172
+    },
+    {
+      "text": "el",
+      "start": 22.172,
+      "end": 22.317
+    },
+    {
+      "text": "siguiente",
+      "start": 22.317,
+      "end": 23.043
+    },
+    {
+      "text": "paso,",
+      "start": 23.043,
+      "end": 23.333
+    },
+    {
+      "text": "usa",
+      "start": 23.434,
+      "end": 23.724
+    },
+    {
+      "text": "una",
+      "start": 23.724,
+      "end": 24.015
+    },
+    {
+      "text": "herramienta,",
+      "start": 24.015,
+      "end": 24.74
+    },
+    {
+      "text": "observa",
+      "start": 24.841,
+      "end": 25.277
+    },
+    {
+      "text": "el",
+      "start": 25.277,
+      "end": 25.422
+    },
+    {
+      "text": "resultado",
+      "start": 25.422,
+      "end": 26.002
+    },
+    {
+      "text": "y",
+      "start": 26.002,
+      "end": 26.147
+    },
+    {
+      "text": "repite",
+      "start": 26.147,
+      "end": 26.582
+    },
+    {
+      "text": "hasta",
+      "start": 26.582,
+      "end": 26.872
+    },
+    {
+      "text": "poder",
+      "start": 26.872,
+      "end": 27.162
+    },
+    {
+      "text": "responder.",
+      "start": 27.162,
+      "end": 27.598
+    },
+    {
+      "text": "Imagina",
+      "start": 27.828,
+      "end": 28.412
+    },
+    {
+      "text": "que",
+      "start": 28.412,
+      "end": 28.704
+    },
+    {
+      "text": "un",
+      "start": 28.704,
+      "end": 28.85
+    },
+    {
+      "text": "cliente",
+      "start": 28.85,
+      "end": 29.289
+    },
+    {
+      "text": "te",
+      "start": 29.289,
+      "end": 29.435
+    },
+    {
+      "text": "escribe",
+      "start": 29.435,
+      "end": 29.873
+    },
+    {
+      "text": "para",
+      "start": 29.873,
+      "end": 30.165
+    },
+    {
+      "text": "pedir",
+      "start": 30.165,
+      "end": 30.457
+    },
+    {
+      "text": "una",
+      "start": 30.457,
+      "end": 30.75
+    },
+    {
+      "text": "reunión.",
+      "start": 30.75,
+      "end": 31.334
+    },
+    {
+      "text": "El",
+      "start": 31.564,
+      "end": 31.712
+    },
+    {
+      "text": "agente",
+      "start": 31.712,
+      "end": 32.157
+    },
+    {
+      "text": "revisa",
+      "start": 32.157,
+      "end": 32.601
+    },
+    {
+      "text": "tu",
+      "start": 32.601,
+      "end": 32.749
+    },
+    {
+      "text": "calendario,",
+      "start": 32.749,
+      "end": 33.49
+    },
+    {
+      "text": "propone",
+      "start": 33.594,
+      "end": 34.038
+    },
+    {
+      "text": "un",
+      "start": 34.038,
+      "end": 34.187
+    },
+    {
+      "text": "horario",
+      "start": 34.187,
+      "end": 34.779
+    },
+    {
+      "text": "libre",
+      "start": 34.779,
+      "end": 35.076
+    },
+    {
+      "text": "y",
+      "start": 35.076,
+      "end": 35.224
+    },
+    {
+      "text": "redacta",
+      "start": 35.224,
+      "end": 35.668
+    },
+    {
+      "text": "la",
+      "start": 35.668,
+      "end": 35.816
+    },
+    {
+      "text": "respuesta.",
+      "start": 35.816,
+      "end": 36.409
+    },
+    {
+      "text": "Tú",
+      "start": 36.639,
+      "end": 36.835
+    },
+    {
+      "text": "decides",
+      "start": 36.835,
+      "end": 37.422
+    },
+    {
+      "text": "si",
+      "start": 37.422,
+      "end": 37.618
+    },
+    {
+      "text": "se",
+      "start": 37.618,
+      "end": 37.814
+    },
+    {
+      "text": "envía.",
+      "start": 37.814,
+      "end": 38.401
+    },
+    {
+      "text": "Un",
+      "start": 38.631,
+      "end": 38.791
+    },
+    {
+      "text": "agente",
+      "start": 38.791,
+      "end": 39.273
+    },
+    {
+      "text": "no",
+      "start": 39.273,
+      "end": 39.434
+    },
+    {
+      "text": "reemplaza",
+      "start": 39.434,
+      "end": 40.076
+    },
+    {
+      "text": "tu",
+      "start": 40.076,
+      "end": 40.237
+    },
+    {
+      "text": "criterio:",
+      "start": 40.237,
+      "end": 40.879
+    },
+    {
+      "text": "automatiza",
+      "start": 40.992,
+      "end": 41.955
+    },
+    {
+      "text": "los",
+      "start": 41.955,
+      "end": 42.116
+    },
+    {
+      "text": "pasos",
+      "start": 42.116,
+      "end": 42.437
+    },
+    {
+      "text": "repetitivos.",
+      "start": 42.437,
+      "end": 43.24
+    },
+    {
+      "text": "Sígueme",
+      "start": 43.47,
+      "end": 44.137
+    },
+    {
+      "text": "para",
+      "start": 44.137,
+      "end": 44.471
+    },
+    {
+      "text": "aprender",
+      "start": 44.471,
+      "end": 44.971
+    },
+    {
+      "text": "a",
+      "start": 44.971,
+      "end": 45.138
+    },
+    {
+      "text": "construir",
+      "start": 45.138,
+      "end": 45.639
+    },
+    {
+      "text": "tu",
+      "start": 45.639,
+      "end": 45.805
+    },
+    {
+      "text": "primer",
+      "start": 45.805,
+      "end": 46.139
+    },
+    {
+      "text": "agente.",
+      "start": 46.139,
+      "end": 46.64
+    }
+  ]
+}

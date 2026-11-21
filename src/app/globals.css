@@ -1,0 +1,149 @@
+/*
+ * VisionQuant Studio — estilos globales (Tailwind CSS v4, configuración CSS-first).
+ * Fuentes: el layout raíz debe importar:
+ *   import "@fontsource-variable/inter";
+ *   import "@fontsource-variable/fraunces";
+ *   import "@fontsource-variable/jetbrains-mono";
+ * Tokens espejo de src/shared/tokens.ts. Ver docs/DESIGN_SYSTEM.md.
+ * Marca: <html data-brand="vision-one|visionquant"> (por defecto Vision One).
+ */
+@import "tailwindcss";
+
+@theme {
+  /* Paleta base */
+  --color-petrol-950: #040b14;
+  --color-petrol-900: #071320;
+  --color-petrol-800: #0c1d2e;
+  --color-petrol-700: #13293f;
+  --color-navy-600: #1c3754;
+  --color-navy-500: #2a4a6b;
+  --color-slate-400: #6f8399;
+  --color-slate-300: #9aabbd;
+  --color-ivory-50: #fbf8f2;
+  --color-ivory-100: #f7f2e8;
+  --color-ivory-200: #ede5d6;
+  --color-gold-400: #d8bd80;
+  --color-gold-500: #c4a464;
+  --color-cyan-400: #4bd9e8;
+  --color-cyan-500: #2bbfcf;
+  --color-charcoal: #0e1114;
+  --color-coral-400: #e8735a;
+  --color-mint-400: #7fd1a8;
+
+  /* Semánticos (sobrescritos por marca) */
+  --color-bg: var(--color-petrol-900);
+  --color-surface: var(--color-petrol-800);
+  --color-raised: var(--color-petrol-700);
+  --color-line: rgb(247 242 232 / 0.12);
+  --color-line-strong: rgb(247 242 232 / 0.22);
+  --color-fg: var(--color-ivory-100);
+  --color-muted: var(--color-slate-300);
+  --color-subtle: var(--color-slate-400);
+  --color-accent: var(--color-cyan-400);
+  --color-accent-strong: var(--color-cyan-500);
+  --color-accent-2: var(--color-gold-400);
+  --color-on-accent: var(--color-petrol-900);
+  --color-danger: var(--color-coral-400);
+  --color-success: var(--color-mint-400);
+
+  /* Tipografía */
+  --font-serif: "Fraunces Variable", "Fraunces", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter Variable", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, "Cascadia Code", monospace;
+
+  /* Radios */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 999px;
+
+  /* Movimiento UI */
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+  --animate-fade-in: fade-in 180ms var(--ease-out-quart) both;
+  --animate-rise-in: rise-in 220ms var(--ease-out-quart) both;
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes rise-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: none; }
+  }
+}
+
+/* VisionQuant: acento dorado, fondo más profundo */
+[data-brand="visionquant"] {
+  --color-bg: var(--color-petrol-950);
+  --color-surface: var(--color-petrol-900);
+  --color-raised: var(--color-petrol-800);
+  --color-line: rgb(216 189 128 / 0.16);
+  --color-line-strong: rgb(216 189 128 / 0.28);
+  --color-accent: var(--color-gold-400);
+  --color-accent-strong: var(--color-gold-500);
+  --color-accent-2: var(--color-cyan-400);
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.55;
+    font-feature-settings: "cv11", "ss01";
+  }
+  ::selection {
+    background-color: color-mix(in srgb, var(--color-accent) 32%, transparent);
+    color: var(--color-ivory-50);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-navy-500) transparent;
+  }
+  *::-webkit-scrollbar { width: 8px; height: 8px; }
+  *::-webkit-scrollbar-thumb { background: var(--color-navy-600); border-radius: 999px; }
+  *::-webkit-scrollbar-track { background: transparent; }
+  hr { border-color: var(--color-line); }
+  dialog::backdrop { background: rgb(4 11 20 / 0.72); }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 1ms !important;
+      transition-duration: 1ms !important;
+    }
+  }
+}
+
+/* Utilidades editoriales */
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+@utility hairline-grid {
+  background-image:
+    linear-gradient(to right, var(--color-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+@utility grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
+}
